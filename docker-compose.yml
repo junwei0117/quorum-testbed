@@ -62,8 +62,9 @@ x-quorum-def:
         --verbosity 5 \
         --networkid $${NETWORK_ID} \
         --ws \
-        --wsport 23000 \
         --wsorigins "*" \
+        --wsaddr 0.0.0.0 \
+        --wsport 23000 \
         --rpc \
         --rpccorsdomain "*" \
         --rpcvhosts "*" \
