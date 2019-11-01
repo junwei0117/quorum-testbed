@@ -17,7 +17,7 @@ $ docker-compose up -d
 ### Stop
 
 ```
-$ docker-compose down
+$ docker-compose down -v
 ```
 
 ## Quonum explorer
