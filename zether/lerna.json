@@ -7,6 +7,6 @@
       "ignoreChanges": ["test/**/*", "*.md", "scripts", "lib"]
     }
   },
-  "npmClient": "npm",
+  "npmClient": "yarn",
   "useWorkspaces": true
 }
