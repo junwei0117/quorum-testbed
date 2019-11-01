@@ -3,11 +3,11 @@
   "private": true,
   "version": "0.1.0",
   "description": "",
-  "scripts": {
-    "deploy": "node packages/example/index.js"
-  },
   "workspaces": [
-    "packages/**"
+    "packages/anonymous.js",
+    "packages/contract-artifacts",
+    "packages/example",
+    "packages/protocol"
   ],
   "devDependencies": {
     "eslint-import-resolver-lerna": "^1.1.0",

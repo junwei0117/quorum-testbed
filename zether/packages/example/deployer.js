@@ -6,7 +6,7 @@ const ZSC = require("../contract-artifacts/artifacts/ZSC.json");
 
 class Deployer {
     constructor() {
-        const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:22000"))
+        const web3 = new Web3(new Web3.providers.HttpProvider("http://node9.puyuma.org:22000"))
         web3.transactionConfirmationBlocks = 1;
 
         this.deployZetherVerifier = () => {
