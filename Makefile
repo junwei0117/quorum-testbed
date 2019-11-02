@@ -21,7 +21,8 @@ start-all:
 	cd ..
 
 stop-all:
-	docker-compose down -v
 	cd explorer
 	docker-compose down -v
 	cd ..
+	docker-compose down -v
+	

@@ -1,22 +1,22 @@
 import Web3 from 'web3';
-import { address as from } from '../constant/addresses';
-import { WSPRCEndpoint, RPCEndpoint } from '../constant/nodes';
+// import { address as from } from '../constant/addresses';
+import { WSRPCEndpoint } from '../constant/nodes';
 import { ZSC } from '../constant/contract-artifacts/ZSC';
-import { zscAddress, tokenAddress } from '../constant/contracts';
-import { Deployer } from '../src/utils';
+import { zscAddress } from '../constant/contracts';
+// import { Deployer } from '../src/utils';
 import Client from '../lib/anonymous.js/src/client';
 
 const run = async () => {
   // const options = { transactionConfirmationBlocks: 1 };
-  const web3 = new Web3(WSPRCEndpoint);
+  const web3 = new Web3(WSRPCEndpoint);
 
-  const deployer = new Deployer(RPCEndpoint, from);
+  // const deployer = new Deployer(RPCEndpoint, from);
+  // await deployer.mintCashToken(tokenAddress, from, 10000000);
+  // await deployer.approveCashToken(tokenAddress, zscAddress, from, 10000000);
+
   const zscObject = new web3.eth.Contract(ZSC.abi, zscAddress);
   const accounts = await web3.eth.getAccounts();
   const client = new Client(zscObject, accounts[0], web3);
-
-  await deployer.mintCashToken(tokenAddress, from, 10000000);
-  await deployer.approveCashToken(tokenAddress, zscAddress, from, 10000000);
   await client.initialize();
   await client.deposit(10000);
   await client.withdraw(1000);

@@ -10,9 +10,9 @@ export class Deployer {
   public deployBurnVerifier: () => Promise<any>;
   public deployCashToken: () => Promise<any>;
   public deployZSC: (ash: any, zether: any, burn: any, epochLength: any) => Promise<any>;
-  public mintCashToken: (contractAddress: string, address: string, value: number) => Promise<any>;
+  public mintCashToken: (tokenAddress: string, address: string, value: number) => Promise<any>;
   // tslint:disable-next-line:max-line-length
-  public approveCashToken: (contractAddress: string, zscAddress: string, address: string, value: number) => Promise<any>;
+  public approveCashToken: (tokenAddress: string, zscAddress: string, address: string, value: number) => Promise<any>;
 
   constructor(endpoint: string, from: string) {
     const web3 = new Web3(endpoint);
@@ -110,9 +110,9 @@ export class Deployer {
       });
     };
 
-    this.mintCashToken = (contractAddress, address, value) => {
+    this.mintCashToken = (tokenAddress, address, value) => {
       const abi = (CashToken as any).abi;
-      const ercContract = new web3.eth.Contract(abi, contractAddress);
+      const ercContract = new web3.eth.Contract(abi, tokenAddress);
       return new Promise((resolve, reject) => {
         ercContract.methods.mint(address, value)
           .send({
@@ -132,9 +132,9 @@ export class Deployer {
       });
     };
 
-    this.approveCashToken = (contractAddress, zscAddress, address, value) => {
+    this.approveCashToken = (tokenAddress, zscAddress, address, value) => {
       const abi = (CashToken as any).abi;
-      const ercContract = new web3.eth.Contract(abi, contractAddress);
+      const ercContract = new web3.eth.Contract(abi, tokenAddress);
       return new Promise((resolve, reject) => {
         ercContract.methods.approve(zscAddress, value)
           .send({

@@ -8,7 +8,9 @@ const run = async () => {
   const zetherVerifierAddress = await deployer.deployZetherVerifier();
   const burnVerifierAddress = await deployer.deployBurnVerifier();
   const tokenAddress = await deployer.deployCashToken();
-  await deployer.deployZSC(tokenAddress, zetherVerifierAddress, burnVerifierAddress, 3);
+  await deployer.mintCashToken(tokenAddress, from, 10000000);
+  const zscAddress = await deployer.deployZSC(tokenAddress, zetherVerifierAddress, burnVerifierAddress, 6);
+  await deployer.approveCashToken(tokenAddress, zscAddress, from, 10000000);
 };
 
 run();

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "author": "BiiLabs Co., Ltd.",
   "scripts": {
-    "deploy": "ts-node src/bin/index.ts"
+    "example": "ts-node ./index.ts"
   },
   "devDependencies": {
     "@types/node": "^12.11.3",
