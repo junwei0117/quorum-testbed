@@ -1,8 +1,7 @@
 .vscode
 
-zether/node_modules
 zether-ts/node_modules
 zether-ts/constant/nodes.ts
 zether-ts/compile
 
-example/node_modules
+zether-js/node_modules

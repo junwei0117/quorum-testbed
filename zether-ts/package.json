@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "author": "BiiLabs Co., Ltd.",
   "scripts": {
-    "deploy": "ts-node src/bin/index.ts"
+    "deploy": "ts-node src/bin/index.ts",
+    "example": "ts-node example/index.ts"
   },
   "devDependencies": {
     "@types/node": "^12.11.3",
@@ -15,6 +16,7 @@
   "dependencies": {
     "bn.js": "^5.0.0",
     "elliptic": "^6.5.0",
-    "web3": "^2.0.0-alpha.1"
+    "web3": "^2.0.0-alpha.1",
+    "web3-utils": "^2.0.0-alpha.1"
   }
 }

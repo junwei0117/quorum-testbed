@@ -1,6 +1,6 @@
-# Quorum-ENV
+# Quorum-Testbed
 
-Deploy environment for running Quorum with Tessera.
+Deploy environment for running Quorum with Tessera and using ZETHER for ZKP.
 
 ## Prerequisites
 
@@ -32,4 +32,18 @@ $ make start-explorer
 
 ```
 $ make stop-explorer
+```
+
+## ZETHER
+
+### Prerequisites
+
+1. Install [Node.js](https://nodejs.org/en/)
+2. Install the dependencies
+
+### Deploy
+
+```
+$ cd zether-js
+$ yarn deploy
 ```

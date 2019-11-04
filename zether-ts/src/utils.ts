@@ -35,7 +35,7 @@ export class Deployer {
           })
           .on('receipt', receipt => {
             console.log('Zether verifier mined, address = "' + receipt.contractAddress + '".');
-            resolve(receipt.contractAddress);
+            resolve(receipt);
           });
       });
     };
@@ -58,7 +58,7 @@ export class Deployer {
           })
           .on('receipt', receipt => {
             console.log('Burn verifier mined, address = "' + receipt.contractAddress + '".');
-            resolve(receipt.contractAddress);
+            resolve(receipt);
           });
       });
     };
@@ -81,7 +81,7 @@ export class Deployer {
           })
           .on('receipt', receipt => {
             console.log('ERC20 contract mined, address = "' + receipt.contractAddress + '".');
-            resolve(receipt.contractAddress);
+            resolve(receipt);
           });
       });
     };
@@ -105,7 +105,7 @@ export class Deployer {
             })
             .on('receipt', receipt => {
               console.log('ZSC main contract deployed, address = "' + receipt.contractAddress + '".');
-              resolve(receipt.contractAddress);
+              resolve(receipt);
             });
       });
     };
@@ -153,5 +153,19 @@ export class Deployer {
           });
       });
     };
+  }
+}
+
+// tslint:disable-next-line:max-classes-per-file
+export class Provider {
+  public getProvider: () => Promise<unknown>;
+  constructor(address: string) {
+      this.getProvider = () => {
+          const { WebsocketProvider } = Web3.providers;
+          const provider = new WebsocketProvider(address);
+          return new Promise((resolve, reject) => {
+              provider.on('connect', () => resolve(provider));
+          });
+      };
   }
 }
