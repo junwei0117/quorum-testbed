@@ -1,8 +1,8 @@
 const Web3 = require("web3");
-const ZetherVerifier = require("../contract-artifacts/artifacts/ZetherVerifier.json");
-const BurnVerifier = require("../contract-artifacts/artifacts/BurnVerifier.json");
-const CashToken = require("../contract-artifacts/artifacts/CashToken.json");
-const ZSC = require("../contract-artifacts/artifacts/ZSC.json");
+const ZetherVerifier = require("../content/contract-artifacts/ZetherVerifier.json");
+const BurnVerifier = require("../content/contract-artifacts/BurnVerifier.json");
+const CashToken = require("../content/contract-artifacts/CashToken.json");
+const ZSC = require("../content/contract-artifacts/ZSC.json");
 
 class Deployer {
     constructor() {
