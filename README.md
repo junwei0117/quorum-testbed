@@ -44,6 +44,6 @@ $ make stop-explorer
 ### Deploy
 
 ```
-$ cd zether-js
+$ cd zether
 $ yarn deploy
 ```
