@@ -1,2 +1,0 @@
-export const RPCEndpoint = 'http://localhost:22000';
-export const WSRPCEndpoint = 'ws://localhost:23000';
