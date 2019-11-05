@@ -392,7 +392,7 @@ services:
     hostname: node7
     ports:
       - "22006:8545"
-      - "23007:23000"
+      - "23006:23000"
     volumes:
       - vol7:/qdata
       - ./preConfigure:/preConfigure:ro
