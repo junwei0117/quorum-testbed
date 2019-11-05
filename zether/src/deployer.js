@@ -5,8 +5,8 @@ const CashToken = require("../content/contract-artifacts/CashToken.json");
 const ZSC = require("../content/contract-artifacts/ZSC.json");
 
 class Deployer {
-    constructor() {
-        const web3 = new Web3(new Web3.providers.HttpProvider("http://node9.puyuma.org:22000"))
+    constructor(RPCEndpoint, fromAddress) {
+        const web3 = new Web3(new Web3.providers.HttpProvider(RPCEndpoint))
         web3.transactionConfirmationBlocks = 1;
 
         this.deployZetherVerifier = () => {
@@ -19,7 +19,7 @@ class Deployer {
                         data: bytecode
                     })
                     .send({
-                        from: "0xed9d02e382b34818e88b88a309c7fe71e65f419d",
+                        from: fromAddress,
                         gas: 470000000
                     })
                     .on("error", (err) => {
@@ -41,7 +41,7 @@ class Deployer {
                         data: bytecode
                     })
                     .send({
-                        from: "0xed9d02e382b34818e88b88a309c7fe71e65f419d",
+                        from: fromAddress,
                         gas: 470000000
                     })
                     .on("error", (err) => {
@@ -64,7 +64,7 @@ class Deployer {
                         data: bytecode
                     })
                     .send({
-                        from: "0xed9d02e382b34818e88b88a309c7fe71e65f419d",
+                        from: fromAddress,
                         gas: 470000000
                     })
                     .on("error", (err) => {
@@ -77,20 +77,20 @@ class Deployer {
             });
         };
 
-        this.mintCashToken = (contractAddress) => {
+        this.mintCashToken = (contractAddress, value) => {
             const abi = CashToken.abi;
             const ercContract = web3.eth.Contract(abi, contractAddress);
             return new Promise((resolve, reject) => {
-                ercContract.methods.mint("0xed9d02e382b34818e88B88a309c7fe71E65f419d", 1000000) // hardcoded address?
+                ercContract.methods.mint(fromAddress, value)
                     .send({
-                        from: "0xed9d02e382b34818e88b88a309c7fe71e65f419d",
+                        from: fromAddress,
                         gas: 470000000
                     })
                     .on("error", (err) => {
                         reject(err);
                     })
                     .on("receipt", (receipt) => {
-                        ercContract.methods.balanceOf("0xed9d02e382b34818e88B88a309c7fe71E65f419d").call()
+                        ercContract.methods.balanceOf(fromAddress).call()
                             .then(balance => {
                                 console.log("ERC20 funds minted (balance = " + balance + ").");
                                 resolve(receipt);
@@ -99,20 +99,20 @@ class Deployer {
             });
         };
 
-        this.approveCashToken = (contractAddress, zscAddress) => {
+        this.approveCashToken = (contractAddress, zscAddress, value) => {
             const abi = CashToken.abi;
             const ercContract = web3.eth.Contract(abi, contractAddress);
             return new Promise((resolve, reject) => {
-                ercContract.methods.approve(zscAddress, 1000000)
+                ercContract.methods.approve(zscAddress, value)
                     .send({
-                        from: "0xed9d02e382b34818e88b88a309c7fe71e65f419d",
+                        from: fromAddress,
                         gas: 470000000
                     })
                     .on("error", (err) => {
                         reject(err);
                     })
                     .on("receipt", (receipt) => {
-                        ercContract.methods.allowance("0xed9d02e382b34818e88B88a309c7fe71E65f419d", zscAddress).call()
+                        ercContract.methods.allowance(fromAddress, zscAddress).call()
                             .then(allowance => {
                                 console.log("ERC funds approved for transfer to ZSC (allowance = " + allowance + ").");
                                 resolve(receipt);
@@ -132,7 +132,7 @@ class Deployer {
                         arguments: [cash, zether, burn, epochLength]
                     })
                     .send({
-                        from: "0xed9d02e382b34818e88b88a309c7fe71e65f419d",
+                        from: fromAddress,
                         gas: 470000000
                     })
                     .on("error", (err) => {

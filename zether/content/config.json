@@ -1,0 +1,8 @@
+{
+  "RPCEndpoint": "http://node9.puyuma.org:22000",
+  "WSRPCEndpoint": "ws://node9.puyuma.org:23000",
+  "ZSCAddress": "0x8a5E2a6343108bABEd07899510fb42297938D41F",
+
+  "AliceAddress": "0xed9d02e382b34818e88b88a309c7fe71e65f419d",
+  "BobPublicKey": ["0x0eaadaaa84784811271240ec2f03b464015082426aa13a46a99a56c964a5c7cc", "0x173ce032ad098e9fcbf813696da92328257e58827f3600b259c42e52ff809433"]
+}

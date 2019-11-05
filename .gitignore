@@ -1,3 +1,5 @@
 .vscode
 
 zether/node_modules
+
+zether/content/config.json
