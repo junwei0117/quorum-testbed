@@ -7,8 +7,9 @@ const Client = require("../lib/anonymous.js/src/client.js");
 const ZSC = require("../content/contract-artifacts/ZSC.json");
 
 (async () => {
-    var provider = new Provider(WSRPCEndpoint);
+    const provider = new Provider(WSRPCEndpoint);
     const web3 = new Web3(await provider.getProvider());
+
     web3.transactionConfirmationBlocks = 1;
 
     const zscObject = new web3.eth.Contract(ZSC.abi, ZSCAddress);
