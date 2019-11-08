@@ -25,14 +25,13 @@ $ make stop-quorum
 ### Start
 
 ```
-$ cd explorer
-$ NODE_ENDPOINT=http://quorum-docker_node1_1:8545 docker-compose -f docker-compose.yml -f quorum-network.yml up -d
+$ make start-explorer
 ```
 
 ### Stop
 
 ```
-$ docker-compose down -v
+$ make stop-explorer
 ```
 
 ## ZETHER
