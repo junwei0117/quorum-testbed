@@ -8,6 +8,6 @@ const AliceAddress = require('../../content/config.json').AliceAddress;
     const burn = (await deployer.deployBurnVerifier()).contractAddress;
     const cash = (await deployer.deployCashToken()).contractAddress;
     await deployer.mintCashToken(cash, 100000000);
-    const zsc = (await deployer.deployZSC(cash, zether, burn, 6)).contractAddress; // epoch length in seconds.
+    const zsc = (await deployer.deployZSC(cash, zether, burn, 6)).contractAddress;
     await deployer.approveCashToken(cash, zsc, 100000000)
 })().catch(console.error);
