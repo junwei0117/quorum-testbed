@@ -11,13 +11,13 @@ Deploy environment for running Quorum with Tessera and using ZETHER for ZKP.
 ### Start
 
 ```
-$ start-quorum
+$ make start-quorum
 ```
 
 ### Stop
 
 ```
-$ stop-quorum
+$ make stop-quorum
 ```
 
 ## Quonum explorer
@@ -25,13 +25,14 @@ $ stop-quorum
 ### Start
 
 ```
-$ make start-explorer
+$ cd explorer
+$ NODE_ENDPOINT=http://quorum-docker_node1_1:8545 docker-compose -f docker-compose.yml -f quorum-network.yml up -d
 ```
 
 ### Stop
 
 ```
-$ make stop-explorer
+$ docker-compose down -v
 ```
 
 ## ZETHER
